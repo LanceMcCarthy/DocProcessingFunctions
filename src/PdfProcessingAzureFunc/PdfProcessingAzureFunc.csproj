@@ -8,20 +8,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.28" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Telerik.Documents.Core">
-      <HintPath>..\TelerikLibs\Telerik.Documents.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Documents.Fixed">
-      <HintPath>..\TelerikLibs\Telerik.Documents.Fixed.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Documents.SpreadsheetStreaming">
-      <HintPath>..\TelerikLibs\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Zip">
-      <HintPath>..\TelerikLibs\Telerik.Zip.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Telerik.Documents.Core.Trial" Version="2020.1.212" />
+    <PackageReference Include="Telerik.Documents.Fixed.Trial" Version="2020.1.212" />
+    <PackageReference Include="Telerik.Documents.Flow.FormatProviders.Pdf.Trial" Version="2020.1.212" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.OpenXml.Trial" Version="2020.1.212" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.Pdf.Trial" Version="2020.1.212" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet.Trial" Version="2020.1.212" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
