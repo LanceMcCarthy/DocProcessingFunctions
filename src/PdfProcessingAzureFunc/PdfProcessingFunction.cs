@@ -1,14 +1,12 @@
-using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Telerik.Windows.Documents.Fixed.FormatProviders.Pdf.Export;
 using Telerik.Windows.Documents.Fixed.FormatProviders.Pdf.Streaming;
 
@@ -50,17 +48,11 @@ namespace PdfProcessingAzureFunc
             // Load the original file (NOTE: In this test, we're using a single test PDF download from public azure blob)
             byte[] sourcePdfBytes = null;
 
-            using (var client = new HttpClient())
-            {
-                sourcePdfBytes = await client.GetByteArrayAsync("https://progressdevsupport.blob.core.windows.net/sampledocs/BarChart.pdf");
-                log.LogInformation($"Source File Downloaded...");
-            }
+            using var client = new HttpClient();
 
-            if (sourcePdfBytes == null)
-            {
-                return new ExceptionResult(new Exception("Original file source could not be downloaded"), true);
-            }
-
+            sourcePdfBytes = await client.GetByteArrayAsync("https://progressdevsupport.blob.core.windows.net/sampledocs/BarChart.pdf");
+            log.LogInformation($"Source File Downloaded...");
+            
             // Because HttpClient result stream is not seekable, I switch to using the byte[] and a new MemoryStream for the Telerik PdfFileSource
             await using var sourcePdfStream = new MemoryStream(sourcePdfBytes);
 
