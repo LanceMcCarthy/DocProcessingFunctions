@@ -10,7 +10,7 @@
     <!-- Add ".Trial" to the end of every Telerik package name if you are using a trial license.
      For example, Include="Telerik.Documents.Core.Trial" instead of Include="Telerik.Documents.Core" 
     -->
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.9" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
     <PackageReference Include="Telerik.Documents.Core" Version="2020.3.915" />
     <PackageReference Include="Telerik.Documents.Fixed" Version="2020.3.915" />
     <PackageReference Include="Telerik.Documents.Flow.FormatProviders.Pdf" Version="2020.3.915" />
