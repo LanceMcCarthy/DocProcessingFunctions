@@ -3,12 +3,17 @@ on:
   push:
     branches:
     - main
+    paths:
+    # Only trigger this workflow if there needs to be a new version published to Azure
+    - 'src/PdfProcessingAzureFunc/**/*'
+    paths-ignore:
+    # Ignore any changes to these file types
+    - '**.md'
+    - '**.gitignore'
+    - '**.csproj.user'
 env:
   AZURE_FUNCTIONAPP_NAME: FunctionsAppService
   AZURE_FUNCTIONAPP_PACKAGE_PATH: src/PdfProcessingAzureFunc/publish
-  CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.x
-  WORKING_DIRECTORY: src/PdfProcessingAzureFunc
 jobs:
   build-and-deploy:
     runs-on: windows-latest
@@ -17,13 +22,20 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+        dotnet-version: 6.0.x
+    
     - name: Restore
-      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      run: dotnet restore "src\PdfProcessingAzureFunc.sln" --configfile src\nuGet.config
+      env:
+        TELERIK_USERNAME: ${{ secrets.MyTelerikAccountUsername }}
+        TELERIK_PASSWORD: ${{ secrets.MyTelerikAccountPassword }}
+      
     - name: Build
-      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+      run: dotnet build "src\PdfProcessingAzureFunc.sln" --configuration Release --no-restore
+    
     - name: Publish
-      run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}"
+      run: dotnet publish "src\PdfProcessingAzureFunc.sln" --configuration Release --no-build --output "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}"
+    
     - name: Deploy to Azure Function App
       uses: Azure/functions-action@v1
       with:
