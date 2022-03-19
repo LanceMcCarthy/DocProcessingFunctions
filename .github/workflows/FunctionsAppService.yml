@@ -6,11 +6,6 @@ on:
     paths:
     # Only trigger this workflow if there needs to be a new version published to Azure
     - 'src/PdfProcessingAzureFunc/**/*'
-    paths-ignore:
-    # Ignore any changes to these file types
-    - '**.md'
-    - '**.gitignore'
-    - '**.csproj.user'
 env:
   AZURE_FUNCTIONAPP_NAME: FunctionsAppService
   AZURE_FUNCTIONAPP_PACKAGE_PATH: src/PdfProcessingAzureFunc/publish
