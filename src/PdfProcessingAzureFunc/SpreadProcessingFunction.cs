@@ -1,11 +1,11 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Telerik.Windows.Documents.Spreadsheet.Model;
 
 namespace PdfProcessingAzureFunc
@@ -18,10 +18,10 @@ namespace PdfProcessingAzureFunc
             ILogger log)
         {
             // Step 1. Mocking an uploaded XLSX file (you would normally use req.Body for this)
-            Workbook workbook = new Workbook();
-            Worksheet worksheet = workbook.Worksheets.Add();
+            var workbook = new Workbook();
+            var worksheet = workbook.Worksheets.Add();
 
-            CellSelection selection = worksheet.Cells[0, 1]; // B0
+            var selection = worksheet.Cells[0, 1]; // B0
             selection.SetValue("Azure Function - XLSX to PDF Converter");
 
             selection = worksheet.Cells[1, 1]; // B2
@@ -44,7 +44,7 @@ namespace PdfProcessingAzureFunc
 
             if (memoryStream.Position != 0) memoryStream.Position = 0;
 
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
+            var response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 //Set the PDF document content response
                 Content = new ByteArrayContent(memoryStream.ToArray())

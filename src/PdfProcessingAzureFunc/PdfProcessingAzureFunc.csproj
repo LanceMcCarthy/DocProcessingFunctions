@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v3</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -10,13 +10,13 @@
     <!-- Add ".Trial" to the end of every Telerik package name if you are using a trial license.
      For example, Include="Telerik.Documents.Core.Trial" instead of Include="Telerik.Documents.Core" 
     -->
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.9" />
-    <PackageReference Include="Telerik.Documents.Core" Version="2020.3.915" />
-    <PackageReference Include="Telerik.Documents.Fixed" Version="2020.3.915" />
-    <PackageReference Include="Telerik.Documents.Flow.FormatProviders.Pdf" Version="2020.3.915" />
-    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.OpenXml" Version="2020.3.915" />
-    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.Pdf" Version="2020.3.915" />
-    <PackageReference Include="Telerik.Documents.Spreadsheet" Version="2020.3.915" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
+    <PackageReference Include="Telerik.Documents.Core" Version="2022.1.217" />
+    <PackageReference Include="Telerik.Documents.Fixed" Version="2022.1.217" />
+    <PackageReference Include="Telerik.Documents.Flow.FormatProviders.Pdf" Version="2022.1.217" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.OpenXml" Version="2022.1.217" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet.FormatProviders.Pdf" Version="2022.1.217" />
+    <PackageReference Include="Telerik.Documents.Spreadsheet" Version="2022.1.217" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
