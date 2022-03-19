@@ -1,6 +1,8 @@
 # DocProcessingFunctions
 An example showcasing Telerik Document Processing Libraries in an Azure Function that can produce a 10,000 page PDF document in 8 seconds.
 
+[![Build and deploy to Azure](https://github.com/LanceMcCarthy/DocProcessingFunctions/actions/workflows/FunctionsAppService.yml/badge.svg)](https://github.com/LanceMcCarthy/DocProcessingFunctions/actions/workflows/FunctionsAppService.yml)
+
 ## NuGet Packages
 
 This project uses the Telerik NuGet server (via nuget.config) to restore the trial packages. Please visit the following Telerik Document Processing documentation for more detailed information and instructions.
